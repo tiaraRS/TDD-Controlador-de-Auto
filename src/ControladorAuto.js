@@ -1,7 +1,11 @@
 function controlarAuto(cadena) {
     let y = 0;
+    let x = 4;
+    let orient = "N";
     if(cadena[0]=="A") y++;
-    return `(4,${y})N`;
+    if(cadena[0]=="I") orient="O";
+    if(cadena.includes("IA")) x--;
+    return `(${x},${y})${orient}`;
 }
   
 export default controlarAuto;

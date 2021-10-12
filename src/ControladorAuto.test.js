@@ -15,6 +15,19 @@ describe("Controlador de Auto para Avanzar 1 posición con cadena A", () => {
     });
     it("deberia devolver la posicion inicial (4,0)N con cadena vacia", () => {
         expect(controlarAuto("")).toEqual("(4,0)N");
+    });    
+});
+
+//F2:
+describe("Controlador de Auto para girar a la izquierda y avanzar 1 posición", () => {
+    //CC1
+    it("deberia devolver (4,0)O con cadena I", () => {
+        expect(controlarAuto("I")).toEqual("(4,0)O");
     });
-    
+    it("deberia devolver (3,0)O  con cadena IA", () => {
+        expect(controlarAuto("IA")).toEqual("(3,0)O");
+    }); 
+    it("deberia devolver (3,0)O  con cadena IA", () => {
+        expect(controlarAuto("IABDE")).toEqual("(3,0)O");
+    }); 
 });
