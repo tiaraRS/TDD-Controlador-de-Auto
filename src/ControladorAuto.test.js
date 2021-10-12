@@ -27,7 +27,11 @@ describe("Controlador de Auto para girar a la izquierda y avanzar 1 posición", 
     it("deberia devolver (3,0)O  con cadena IA", () => {
         expect(controlarAuto("IA")).toEqual("(3,0)O");
     }); 
-    it("deberia devolver (3,0)O  con cadena IA", () => {
+    it("deberia devolver (3,0)O  con cadena IABDE", () => {
         expect(controlarAuto("IABDE")).toEqual("(3,0)O");
+    }); 
+    //CC2
+    it("deberia mantener pos inicial con caracteres distintos de IA al principio de la cadena", () => {
+        expect(controlarAuto("BIABDE")).toEqual("(4,0)N");
     }); 
 });
