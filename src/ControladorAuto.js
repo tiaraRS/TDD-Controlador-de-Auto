@@ -1,6 +1,8 @@
 function controlarAuto(cadena) {
-    return "(4,1)N";
-  }
+    let y = 0;
+    if(cadena[0]=="A") y++;
+    return `(4,${y})N`;
+}
   
 export default controlarAuto;
   
