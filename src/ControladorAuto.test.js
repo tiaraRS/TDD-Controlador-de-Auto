@@ -35,3 +35,18 @@ describe("Controlador de Auto para girar a la izquierda y avanzar 1 posición", 
         expect(controlarAuto("BIABDE")).toEqual("(4,0)N");
     }); 
 });
+
+//F3:
+describe("Controlador de Auto para girar a la derecha y avanzar 1 posición", () => {
+    //CC1
+    it("deberia devolver (4,0)E con cadena D", () => {
+        expect(controlarAuto("D")).toEqual("(4,0)E");
+    });
+    it("deberia devolver (5,0)E con cadena DA", () => {
+        expect(controlarAuto("DA")).toEqual("(5,0)E");
+    });
+    it("deberia devolver (5,0)E con cadena DAFDS", () => {
+        expect(controlarAuto("DAFDS")).toEqual("(5,0)E");
+    });
+
+});
