@@ -48,5 +48,9 @@ describe("Controlador de Auto para girar a la derecha y avanzar 1 posición", ()
     it("deberia devolver (5,0)E con cadena DAFDS", () => {
         expect(controlarAuto("DAFDS")).toEqual("(5,0)E");
     });
+    //CC2
+    it("deberia mantener pos inicial con caracteres distintos de IDA al principio de la cadena", () => {
+        expect(controlarAuto("PAFDSDAFDS")).toEqual("(4,0)N");
+    }); 
 
 });

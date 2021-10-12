@@ -6,7 +6,7 @@ function controlarAuto(cadena) {
     if(cadena[0]=="I") orient="O";
     if(cadena.startsWith("IA")) x--;
     if(cadena[0] == "D") orient = "E";
-    if(cadena.includes("DA")) x++;
+    if(cadena.startsWith("DA")) x++;
     return `(${x},${y})${orient}`;
 }
   
