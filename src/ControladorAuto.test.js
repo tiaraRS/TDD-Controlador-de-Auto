@@ -136,3 +136,13 @@ describe("Controlador de Auto eligiendo posicion inicial x del auto en la superf
     });
 
 });
+//F7
+describe("Controlador de Auto eligiendo posicion inicial x,y del auto en la superficie", () => {
+    //CC1
+    it("deberia devolver (0,3)O con cadena 0/AAAI", () => {
+        expect(controlarAuto("0,0/AAAI")).toEqual("(0,3)O");
+    });
+    it("deberia devolver (4,6)N con cadena 0/AAAI", () => {
+        expect(controlarAuto("4,4/AADDDD")).toEqual("(4,6)N");
+    });
+});
