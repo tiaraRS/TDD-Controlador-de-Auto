@@ -76,7 +76,14 @@ describe("Controlador de Auto para girar varias veces y avanzar 1 posicion", () 
     it("deberia devolver (4,1)N  con cadena DDIIAZ", () => {
         expect(controlarAuto("DDIIAZ")).toEqual("(4,1)N");
     });
+    //CC2
+    it("deberia devolver (4,1)O con cadena DIAI", () => {
+        expect(controlarAuto("DIAI")).toEqual("(4,1)O");
+    });
+    it("deberia devolver (5,2)N con cadena ADAIA", () => {
+        expect(controlarAuto("ADAIA")).toEqual("(5,2)N");
+    });
     
-
 });
+
 

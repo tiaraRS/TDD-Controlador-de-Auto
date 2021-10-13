@@ -7,8 +7,7 @@ function controlarAuto(cadena) {
         if(cadena[i]=="A"){
             if(orient=="N") y++;
             if(orient=="O") x--;
-            if(orient=="E") x++;
-            return `(${x},${y})${orient}`;
+            if(orient=="E") x++;          
         } 
         if(cadena[i]=="I") {
             if (orient=="N"){
