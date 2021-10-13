@@ -190,4 +190,11 @@ describe("Controlador de Auto eligiendo tamaño de superficie l (lxl) del auto",
     it("deberia devolver (0,4)O con cadena 5/0,0N/A", () => {
         expect(controlarAuto("5/0,1N/AAAI")).toEqual("(0,4)O");
     });
+    //CC2
+    it("deberia mostrar mensaje de error Sintaxis incorrecto para +/5,5O/AAAI", () => {
+        expect(controlarAuto("+/5,5O/AAAI")).toEqual("Sintaxis incorrecto");
+    });
+    it("deberia mostrar mensaje de error Sintaxis incorrecto para A/5,5O/AAAI", () => {
+        expect(controlarAuto("A/5,5O/AAAI")).toEqual("Sintaxis incorrecto");
+    });
 });

@@ -85,7 +85,7 @@ function obtenerTamSuperficie(cadenaDeControlAuto){
     let cadenaSeparada = cadenaDeControlAuto.split("/");
     let tamInicialX = 8;
     let tamInicialY = 8;
-    let cadenaTamSuperficie = "8,8";
+    let cadenaTamSuperficie = "8";
     if(cadenaSeparada.length>2){        
         cadenaTamSuperficie = cadenaSeparada[0];
     }
@@ -109,6 +109,7 @@ function controlarAuto(cadenaDeControlAuto) {
     let cadenaDeAvance = obtenerCadenaDeAvance(cadenaDeControlAuto);
     [x,y,orientacion] = obtenerPosicionInicial(cadenaDeControlAuto);
     [tamInicialX,tamInicialY] = obtenerTamSuperficie(cadenaDeControlAuto);
+    if(Number.isNaN(tamInicialX) || Number.isNaN(tamInicialY)) return "Sintaxis incorrecto";
     if(!verificarOrientacionValida(orientacion)) return "orientación inicial no válida";
     if(x>8 || x<0) return "Valor no permitido: fuera de rango de superficie";
     if(y>8 || y<0) return "Valor no permitido: fuera de rango de superficie";
