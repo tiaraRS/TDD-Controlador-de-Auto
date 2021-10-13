@@ -6,11 +6,12 @@ function ajustarCoordenada(coordenada, limiteMaxCoordenada){
     return coordenadaAjustada;
 }
 
-function ajustarXYFueraDeSuperficie(x,y,tamX,tamY){
-    let xAjustada = ajustarCoordenada(x,tamX);
-    let yAjustada = ajustarCoordenada(y,tamY);
+function ajustarXYFueraDeSuperficie(x,y,limiteX,limiteY){
+    let xAjustada = ajustarCoordenada(x,limiteX);
+    let yAjustada = ajustarCoordenada(y,limiteY);
     return [xAjustada,yAjustada]
 }
+
 
 function obtenerPosicionNuevaSegunOrientacion(x,y,orientacion){
     let xNueva = x;
@@ -22,23 +23,18 @@ function obtenerPosicionNuevaSegunOrientacion(x,y,orientacion){
     return [xNueva,yNueva]
 }
 
+function obtenerSiguienteOrientacion(orientacion,orientaciones){
+  let siguienteOrientacion = orientacion;
+  if(orientacion==orientaciones[3]) siguienteOrientacion = orientaciones[0];
+        else siguienteOrientacion = orientaciones[orientaciones.indexOf(orientacion)+1];
+  return siguienteOrientacion;
+}
+
 function obtenerOrientacionGiro(giro,orientacion){
     let orientaciones = ['N','E','S','O'];
     let nuevaOrientacion = orientacion;
-    if(giro=="I") {
-        if (orientacion=="N"){
-            nuevaOrientacion="O";
-        } else{
-            nuevaOrientacion = orientaciones[orientaciones.indexOf(orientacion)-1];
-        }
-    }
-    if(giro == "D") {
-        if (orientacion=="O"){
-            nuevaOrientacion="N";
-        } else{
-            nuevaOrientacion = orientaciones[orientaciones.indexOf(orientacion)+1];
-        }  
-    }    
+    if(giro=="I") nuevaOrientacion = obtenerSiguienteOrientacion(orientacion,orientaciones.reverse());
+    if(giro == "D") nuevaOrientacion = obtenerSiguienteOrientacion(orientacion,orientaciones);    
     return nuevaOrientacion;
 }
 
