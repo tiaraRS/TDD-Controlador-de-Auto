@@ -109,10 +109,5 @@ describe("Controlador de Auto para girar varias veces y avanzar varias posicione
     });
     it("deberia devolver (0,0)O con cadena IAAAAAA", () => {
         expect(controlarAuto("IAAAAAA")).toEqual("(0,0)O");
-    });
-
-
-    
+    }); 
 });
-
-
