@@ -1,10 +1,14 @@
+
+function ajustarCoordenada(coordenada, limiteMaxCoordenada){
+    let coordenadaAjustada = coordenada;
+    if (coordenada > limiteMaxCoordenada) coordenadaAjustada = limiteMaxCoordenada;
+    if (coordenada < 0) coordenadaAjustada = 0;
+    return coordenadaAjustada;
+}
+
 function ajustarXYFueraDeSuperficie(x,y,tamX,tamY){
-    let xAjustada = x;
-    let yAjustada = y;
-    if(y>tamY) yAjustada=tamY;
-    if(y<0) yAjustada=0;
-    if(x>tamX) xAjustada=tamX;
-    if(x<0) xAjustada=0;
+    let xAjustada = ajustarCoordenada(x,tamX);
+    let yAjustada = ajustarCoordenada(y,tamY);
     return [xAjustada,yAjustada]
 }
 
