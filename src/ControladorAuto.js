@@ -55,6 +55,7 @@ function controlarAuto(cadenaDeControlAuto) {
         cadenaPosInicial = cadenaSeparada[0];
     }
     x = Number(cadenaPosInicial);
+    if(Number.isNaN(x)) return "Sintaxis incorrecto"
     if(x>8 || x<0) return "Valor no permitido: fuera de rango de superficie";
     for(let i=0;i<cadenaDeControlAuto.length;i++){           
         if(cadenaDeControlAuto[i]=="A"){
