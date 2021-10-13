@@ -99,6 +99,17 @@ function verificarOrientacionValida(orientacion){
     return orientaciones.includes(orientacion);
 }
 
+function verificarPosicionInicialFueraDeRango(x,y){
+    let valorFueraDeRango = false;
+    if(x>8 || x<0 || y>8 || y<0) valorFueraDeRango = true;
+    return valorFueraDeRango;
+}
+
+function verificarTamSuperficie(tamInicialX,tamInicialY){
+    return tamInicialY < 0 || tamInicialY < 0;
+}
+
+
 function controlarAuto(cadenaDeControlAuto) {
     let y = 0;
     let x = 4;
@@ -110,10 +121,9 @@ function controlarAuto(cadenaDeControlAuto) {
     [x,y,orientacion] = obtenerPosicionInicial(cadenaDeControlAuto);
     [tamInicialX,tamInicialY] = obtenerTamSuperficie(cadenaDeControlAuto);   
     if(Number.isNaN(tamInicialX) || Number.isNaN(tamInicialY)) return "Sintaxis incorrecto";
-    if(tamInicialY < 0 || tamInicialY < 0) return "número negativo en tamaño de superficie";
-    if(!verificarOrientacionValida(orientacion)) return "orientación inicial no válida";
-    if(x>8 || x<0) return "Valor no permitido: fuera de rango de superficie";
-    if(y>8 || y<0) return "Valor no permitido: fuera de rango de superficie";
+    if(verificarTamSuperficie(tamInicialX,tamInicialY)) return "número negativo en tamaño de superficie";
+    if(!verificarOrientacionValida(orientacion)) return "orientación inicial no válida";    
+    if(verificarPosicionInicialFueraDeRango(x,y)) return "Valor no permitido: fuera de rango de superficie";
     if(Number.isNaN(x)||x==undefined) return "Sintaxis incorrecto";
     if(Number.isNaN(y)||y==undefined) return "Sintaxis incorrecto";
     for(let i=0;i<cadenaDeAvance.length;i++){           
