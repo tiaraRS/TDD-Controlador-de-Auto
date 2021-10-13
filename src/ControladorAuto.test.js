@@ -180,3 +180,14 @@ describe("Controlador de Auto eligiendo orientacion inicial del auto", () => {
         expect(controlarAuto("5,5U/AAAI")).toEqual("orientación inicial no válida");
     });
 });
+
+//F9
+describe("Controlador de Auto eligiendo tamaño de superficie l (lxl) del auto", () => {
+    //CC1
+    it("deberia devolver (0,1)N con cadena 8/0,0N/A", () => {
+        expect(controlarAuto("8/0,0N/A")).toEqual("(0,1)N");
+    });
+    it("deberia devolver (0,4)O con cadena 5/0,0N/A", () => {
+        expect(controlarAuto("5/0,1N/AAAI")).toEqual("(0,4)O");
+    });
+});

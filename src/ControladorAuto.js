@@ -49,6 +49,9 @@ function obtenerCadenaDeAvance(cadenaDeControlAuto){
     if(cadenaSeparada.length>1){
         cadenaDeAvance = cadenaSeparada[1];      
     }
+    if(cadenaSeparada.length>2){
+        cadenaDeAvance = cadenaSeparada[2];      
+    }
     return cadenaDeAvance;
 }
 
@@ -57,11 +60,16 @@ function obtenerPosicionInicial(cadenaDeControlAuto){
     let cadenaPosInicial="4";
     let x = 4;
     let y = 0;
+    let posPosicionInicial = -1;
     let orientacion="N";
-    if(cadenaSeparada.length>1){        
-        cadenaPosInicial = cadenaSeparada[0];
+    if(cadenaSeparada.length>2){        
+        posPosicionInicial = 1;
     }
-    let cadenaPosInicialSeparada = cadenaPosInicial.split(",");    
+    else if(cadenaSeparada.length>1){
+        posPosicionInicial = 0;
+    }    
+    if(posPosicionInicial>-1) cadenaPosInicial = cadenaSeparada[posPosicionInicial];
+    let cadenaPosInicialSeparada = cadenaPosInicial.split(",");  
     x = cadenaPosInicialSeparada[0];
     if(cadenaPosInicial.length>1){
         y = cadenaPosInicialSeparada[1];
@@ -73,6 +81,19 @@ function obtenerPosicionInicial(cadenaDeControlAuto){
     return [Number(x),Number(y),orientacion];
 }
 
+function obtenerTamSuperficie(cadenaDeControlAuto){
+    let cadenaSeparada = cadenaDeControlAuto.split("/");
+    let tamInicialX = 8;
+    let tamInicialY = 8;
+    let cadenaTamSuperficie = "8,8";
+    if(cadenaSeparada.length>2){        
+        cadenaTamSuperficie = cadenaSeparada[0];
+    }
+    tamInicialX = cadenaTamSuperficie;
+    tamInicialY = cadenaTamSuperficie;
+    return [Number(tamInicialX),Number(tamInicialY)];
+}
+
 function verificarOrientacionValida(orientacion){
     let orientaciones = ['N','E','S','O'];
     return orientaciones.includes(orientacion);
@@ -81,10 +102,13 @@ function verificarOrientacionValida(orientacion){
 function controlarAuto(cadenaDeControlAuto) {
     let y = 0;
     let x = 4;
+    let tamInicialX = 8;
+    let tamInicialY = 8;
     let orientacion = "N";
     let cadenaPosInicial="4";    
     let cadenaDeAvance = obtenerCadenaDeAvance(cadenaDeControlAuto);
     [x,y,orientacion] = obtenerPosicionInicial(cadenaDeControlAuto);
+    [tamInicialX,tamInicialY] = obtenerTamSuperficie(cadenaDeControlAuto);
     if(!verificarOrientacionValida(orientacion)) return "orientación inicial no válida";
     if(x>8 || x<0) return "Valor no permitido: fuera de rango de superficie";
     if(y>8 || y<0) return "Valor no permitido: fuera de rango de superficie";
