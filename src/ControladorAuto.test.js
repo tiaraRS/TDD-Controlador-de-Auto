@@ -54,3 +54,29 @@ describe("Controlador de Auto para girar a la derecha y avanzar 1 posición", ()
     }); 
 
 });
+
+//F4:
+describe("Controlador de Auto para girar varias veces y avanzar 1 posicion", () => {
+    //CC1
+    it("deberia devolver (4,0)S con cadena DD", () => {
+        expect(controlarAuto("DD")).toEqual("(4,0)S");
+    });
+    it("deberia devolver (4,0)O con cadena DDD", () => {
+        expect(controlarAuto("DDD")).toEqual("(4,0)O");
+    });
+    it("deberia devolver (4,0)S con cadena II", () => {
+        expect(controlarAuto("II")).toEqual("(4,0)S");
+    });
+    it("deberia devolver (4,0)E con cadena III", () => {
+        expect(controlarAuto("III")).toEqual("(4,0)E");
+    });
+    it("deberia devolver (4,0)N con cadena DDDD", () => {
+        expect(controlarAuto("DDDD")).toEqual("(4,0)N");
+    });
+    it("deberia devolver (4,1)N  con cadena DDIIAZ", () => {
+        expect(controlarAuto("DDIIAZ")).toEqual("(4,1)N");
+    });
+    
+
+});
+

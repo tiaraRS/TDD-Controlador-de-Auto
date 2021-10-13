@@ -1,12 +1,32 @@
 function controlarAuto(cadena) {
     let y = 0;
     let x = 4;
+    let orientaciones = ['N','E','S','O'];
     let orient = "N";
-    if(cadena[0]=="A") y++;
-    if(cadena[0]=="I") orient="O";
-    if(cadena.startsWith("IA")) x--;
-    if(cadena[0] == "D") orient = "E";
-    if(cadena.startsWith("DA")) x++;
+    for(let i=0;i<cadena.length;i++){   
+        if(cadena[i]=="A"){
+            if(orient=="N") y++;
+            if(orient=="O") x--;
+            if(orient=="E") x++;
+            return `(${x},${y})${orient}`;
+        } 
+        if(cadena[i]=="I") {
+            if (orient=="N"){
+                orient="O";
+            } else{
+                orient = orientaciones[orientaciones.indexOf(orient)-1];
+            }
+        }
+        if(cadena[i] == "D") 
+        if (orient=="O"){
+            orient="N";
+        } else{
+            orient = orientaciones[orientaciones.indexOf(orient)+1];
+        }  
+        if(cadena[i] !="I" && cadena[i] !="A" && cadena[i]!="D") { 
+            return `(${x},${y})${orient}`;
+        }
+    }
     return `(${x},${y})${orient}`;
 }
   
