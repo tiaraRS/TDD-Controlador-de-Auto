@@ -229,5 +229,12 @@ describe("Controlador de Auto eligiendo tamaño de superficie l y a (lxa) del au
     it("deberia devolver (1,0)S con cadena 1,1/1,1S/AAAA", () => {
         expect(controlarAuto("1,1/1,1S/AAAA")).toEqual("(1,0)S");
     });
+    //CC4
+    it("deberia mostrar mensaje de error fuera de rango de superficie para 1,1/1,2S/AAAA", () => {
+        expect(controlarAuto("1,1/1,2S/AAAA")).toEqual("Valor no permitido: fuera de rango de superficie");
+    });
+    it("deberia mostrar mensaje de error fuera de rango de superficie para 1,1/2,1S/AAAA", () => {
+        expect(controlarAuto("2,1/1,2S/AAAA")).toEqual("Valor no permitido: fuera de rango de superficie");
+    });
 
 });

@@ -102,9 +102,9 @@ function verificarOrientacionValida(orientacion){
     return orientaciones.includes(orientacion);
 }
 
-function verificarPosicionInicialFueraDeRango(x,y){
+function verificarPosicionInicialFueraDeRango(x,y, tamX, tamY){
     let valorFueraDeRango = false;
-    if(x>8 || x<0 || y>8 || y<0) valorFueraDeRango = true;
+    if(x>tamX || x<0 || y>tamY || y<0) valorFueraDeRango = true;
     return valorFueraDeRango;
 }
 
@@ -126,7 +126,7 @@ function controlarAuto(cadenaDeControlAuto) {
     if(Number.isNaN(tamInicialX) || Number.isNaN(tamInicialY)) return "Sintaxis incorrecto";
     if(verificarTamSuperficie(tamInicialX,tamInicialY)) return "número negativo en tamaño de superficie";
     if(!verificarOrientacionValida(orientacion)) return "orientación inicial no válida";    
-    if(verificarPosicionInicialFueraDeRango(x,y)) return "Valor no permitido: fuera de rango de superficie";
+    if(verificarPosicionInicialFueraDeRango(x,y,tamInicialX, tamInicialY)) return "Valor no permitido: fuera de rango de superficie";
     if(Number.isNaN(x)||x==undefined) return "Sintaxis incorrecto";
     if(Number.isNaN(y)||y==undefined) return "Sintaxis incorrecto";
     for(let i=0;i<cadenaDeAvance.length;i++){           
