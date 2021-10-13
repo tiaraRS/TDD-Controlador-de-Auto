@@ -155,4 +155,11 @@ describe("Controlador de Auto eligiendo posicion inicial x,y del auto en la supe
     it("deberia mensaje de error fuera de rango de superficie para 0,-2/DA", () => {
         expect(controlarAuto("0,-2/DA")).toEqual("Valor no permitido: fuera de rango de superficie");
     });
+    //CC3
+    it("deberia mostrar mensaje de error Sintaxis incorrecto para 7,=/DA", () => {
+        expect(controlarAuto("7,=/DA")).toEqual("Sintaxis incorrecto");
+    });
+    it("deberia mostrar mensaje de error Sintaxis incorrecto para 0,;,1/AAAI", () => {
+        expect(controlarAuto("0,;,1/AAAI")).toEqual("Sintaxis incorrecto");
+    });
 });
