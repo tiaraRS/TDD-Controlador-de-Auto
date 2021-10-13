@@ -142,7 +142,17 @@ describe("Controlador de Auto eligiendo posicion inicial x,y del auto en la supe
     it("deberia devolver (0,3)O con cadena 0/AAAI", () => {
         expect(controlarAuto("0,0/AAAI")).toEqual("(0,3)O");
     });
-    it("deberia devolver (4,6)N con cadena 0/AAAI", () => {
+    it("deberia devolver (4,6)N con cadena 4,4/AADDDD", () => {
         expect(controlarAuto("4,4/AADDDD")).toEqual("(4,6)N");
+    });
+    //CC2
+    it("deberia mensaje de error fuera de rango de superficie para 9,9/DA", () => {
+        expect(controlarAuto("9,9/DA")).toEqual("Valor no permitido: fuera de rango de superficie");
+    });
+    it("deberia mensaje de error fuera de rango de superficie para 0,9/DA", () => {
+        expect(controlarAuto("0,9/DA")).toEqual("Valor no permitido: fuera de rango de superficie");
+    });
+    it("deberia mensaje de error fuera de rango de superficie para 0,-2/DA", () => {
+        expect(controlarAuto("0,-2/DA")).toEqual("Valor no permitido: fuera de rango de superficie");
     });
 });
