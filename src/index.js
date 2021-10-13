@@ -1,15 +1,10 @@
-import sumar from "./App";
+import controlarAuto from "./ControladorAuto";
 
-const first = document.querySelector("#first-number");
-const second = document.querySelector("#second-number");
-const form = document.querySelector("#sumar-form");
+const comandosAuto = document.querySelector("#comandos-text");
+const form = document.querySelector("#controlador-form");
 const div = document.querySelector("#resultado-div");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-
-  const firstNumber = Number.parseInt(first.value);
-  const secondNumber = Number.parseInt(second.value);
-
-  div.innerHTML = "<p>" + sumar(firstNumber, secondNumber) + "</p>";
+  div.innerHTML = "<label>Posicion final:</label><b></b>"+"<p>" + controlarAuto(comandosAuto.value) + "</p>";
 });
