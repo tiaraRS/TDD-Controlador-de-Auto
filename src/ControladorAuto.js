@@ -44,25 +44,41 @@ function caracterValido(caracter){
     return valido;
 }
 
+function obtenerCadenaDeAvance(cadenaDeControlAuto){
+    let cadenaSeparada = cadenaDeControlAuto.split("/");  
+    let cadenaDeAvance = cadenaDeControlAuto; 
+    if(cadenaSeparada.length>1){
+        cadenaDeAvance = cadenaSeparada[1];      
+    }
+    return cadenaDeAvance;
+}
+
+function obtenerPosicionXInicial(cadenaDeControlAuto){
+    let cadenaSeparada = cadenaDeControlAuto.split("/");
+    let cadenaPosInicial="4";
+    let x = 4;
+    if(cadenaSeparada.length>1){        
+        cadenaPosInicial = cadenaSeparada[0];
+    }
+    x = Number(cadenaPosInicial);
+    return x;
+}
+
 function controlarAuto(cadenaDeControlAuto) {
     let y = 0;
     let x = 4;
     let orientacion = "N";
-    let cadenaSeparada = cadenaDeControlAuto.split("/");
     let cadenaPosInicial="4";
-    if(cadenaSeparada.length>1){
-        cadenaDeControlAuto = cadenaSeparada[1];
-        cadenaPosInicial = cadenaSeparada[0];
-    }
-    x = Number(cadenaPosInicial);
+    let cadenaDeAvance = obtenerCadenaDeAvance(cadenaDeControlAuto);
+    x = obtenerPosicionXInicial(cadenaDeControlAuto);
     if(Number.isNaN(x)) return "Sintaxis incorrecto"
     if(x>8 || x<0) return "Valor no permitido: fuera de rango de superficie";
-    for(let i=0;i<cadenaDeControlAuto.length;i++){           
-        if(cadenaDeControlAuto[i]=="A"){
+    for(let i=0;i<cadenaDeAvance.length;i++){           
+        if(cadenaDeAvance[i]=="A"){
             [x,y] = obtenerPosicionNuevaSegunOrientacion(x,y,orientacion)    
         } 
-        orientacion = obtenerOrientacionGiro(cadenaDeControlAuto[i],orientacion);       
-        if(!caracterValido(cadenaDeControlAuto[i])) { 
+        orientacion = obtenerOrientacionGiro(cadenaDeAvance[i],orientacion);       
+        if(!caracterValido(cadenaDeAvance[i])) { 
             return `(${x},${y})${orientacion}`;
         }       
     }
