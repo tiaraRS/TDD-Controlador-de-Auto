@@ -89,8 +89,11 @@ function obtenerTamSuperficie(cadenaDeControlAuto){
     if(cadenaSeparada.length>2){        
         cadenaTamSuperficie = cadenaSeparada[0];
     }
-    tamInicialX = cadenaTamSuperficie;
+    tamInicialX = cadenaTamSuperficie.split(",")[0];
     tamInicialY = cadenaTamSuperficie;
+    if(cadenaTamSuperficie.split(",").length>1){
+        tamInicialY = cadenaTamSuperficie.split(",")[1];
+    }    
     return [Number(tamInicialX),Number(tamInicialY)];
 }
 
