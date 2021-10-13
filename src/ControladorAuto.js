@@ -135,6 +135,7 @@ function controlarAuto(cadenaDeControlAuto) {
         } 
         orientacion = obtenerOrientacionGiro(cadenaDeAvance[i],orientacion);       
         if(!caracterValido(cadenaDeAvance[i])) { 
+            [x,y] = ajustarXYFueraDeSuperficie(x,y,tamInicialX,tamInicialY);
             return `(${x},${y})${orientacion}`;
         }       
     }
