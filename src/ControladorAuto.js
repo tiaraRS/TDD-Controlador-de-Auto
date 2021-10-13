@@ -73,16 +73,19 @@ function obtenerPosicionInicial(cadenaDeControlAuto){
     return [Number(x),Number(y),orientacion];
 }
 
+function verificarOrientacionValida(orientacion){
+    let orientaciones = ['N','E','S','O'];
+    return orientaciones.includes(orientacion);
+}
 
 function controlarAuto(cadenaDeControlAuto) {
     let y = 0;
     let x = 4;
     let orientacion = "N";
-    let cadenaPosInicial="4";
-    let orientaciones = ['N','E','S','O'];
+    let cadenaPosInicial="4";    
     let cadenaDeAvance = obtenerCadenaDeAvance(cadenaDeControlAuto);
     [x,y,orientacion] = obtenerPosicionInicial(cadenaDeControlAuto);
-    if(!orientaciones.includes(orientacion)) return "orientación inicial no válida";
+    if(!verificarOrientacionValida(orientacion)) return "orientación inicial no válida";
     if(x>8 || x<0) return "Valor no permitido: fuera de rango de superficie";
     if(y>8 || y<0) return "Valor no permitido: fuera de rango de superficie";
     if(Number.isNaN(x)||x==undefined) return "Sintaxis incorrecto";
