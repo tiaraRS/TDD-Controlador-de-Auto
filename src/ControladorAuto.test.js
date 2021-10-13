@@ -197,4 +197,8 @@ describe("Controlador de Auto eligiendo tamaño de superficie l (lxl) del auto",
     it("deberia mostrar mensaje de error Sintaxis incorrecto para A/5,5O/AAAI", () => {
         expect(controlarAuto("A/5,5O/AAAI")).toEqual("Sintaxis incorrecto");
     });
+    //CC3
+    it("deberia devolver número negativo en tamaño de superficie con cadena -4/5,5O/AAAI", () => {
+        expect(controlarAuto("-4/5,5O/AAAI")).toEqual("número negativo en tamaño de superficie");
+    });
 });

@@ -108,8 +108,9 @@ function controlarAuto(cadenaDeControlAuto) {
     let cadenaPosInicial="4";    
     let cadenaDeAvance = obtenerCadenaDeAvance(cadenaDeControlAuto);
     [x,y,orientacion] = obtenerPosicionInicial(cadenaDeControlAuto);
-    [tamInicialX,tamInicialY] = obtenerTamSuperficie(cadenaDeControlAuto);
+    [tamInicialX,tamInicialY] = obtenerTamSuperficie(cadenaDeControlAuto);   
     if(Number.isNaN(tamInicialX) || Number.isNaN(tamInicialY)) return "Sintaxis incorrecto";
+    if(tamInicialY < 0 || tamInicialY < 0) return "número negativo en tamaño de superficie";
     if(!verificarOrientacionValida(orientacion)) return "orientación inicial no válida";
     if(x>8 || x<0) return "Valor no permitido: fuera de rango de superficie";
     if(y>8 || y<0) return "Valor no permitido: fuera de rango de superficie";
