@@ -28,6 +28,10 @@ function controlarAuto(cadena) {
             return `(${x},${y})${orient}`;
         }       
     }
+    if(y>8) y=8;
+    if(y<0) y=0;
+    if(x>8) x=8;
+    if(x<0) x=0;
     return `(${x},${y})${orient}`;
 }
   
