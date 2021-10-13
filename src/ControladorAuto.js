@@ -1,9 +1,9 @@
-function ajustarXYFueraDeSuperficie(x,y){
+function ajustarXYFueraDeSuperficie(x,y,tamX,tamY){
     let xAjustada = x;
     let yAjustada = y;
-    if(y>8) yAjustada=8;
+    if(y>tamY) yAjustada=tamY;
     if(y<0) yAjustada=0;
-    if(x>8) xAjustada=8;
+    if(x>tamX) xAjustada=tamX;
     if(x<0) xAjustada=0;
     return [xAjustada,yAjustada]
 }
@@ -109,7 +109,7 @@ function verificarPosicionInicialFueraDeRango(x,y){
 }
 
 function verificarTamSuperficie(tamInicialX,tamInicialY){
-    return tamInicialY < 0 || tamInicialY < 0;
+    return tamInicialY < 0 || tamInicialX < 0;
 }
 
 
@@ -138,7 +138,7 @@ function controlarAuto(cadenaDeControlAuto) {
             return `(${x},${y})${orientacion}`;
         }       
     }
-    [x,y] = ajustarXYFueraDeSuperficie(x,y);
+    [x,y] = ajustarXYFueraDeSuperficie(x,y,tamInicialX,tamInicialY);
     return `(${x},${y})${orientacion}`;
 }
   

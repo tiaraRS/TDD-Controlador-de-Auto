@@ -212,4 +212,22 @@ describe("Controlador de Auto eligiendo tamaño de superficie l y a (lxa) del au
     it("deberia devolver (0,1)N con cadena 5,6/0,0N/A", () => {
         expect(controlarAuto("5,6/0,0N/A")).toEqual("(0,1)N");
     });
+    //CC2
+    it("deberia devolver número negativo en tamaño de superficie con cadena -8,8/0,0N/A", () => {
+        expect(controlarAuto("-8,8/0,0N/A")).toEqual("número negativo en tamaño de superficie");
+    });
+    //CC3
+    it("deberia devolver (1,2)O con cadena 1,2/1,1N/AAAI", () => {
+        expect(controlarAuto("1,2/1,1N/AAAI")).toEqual("(1,2)O");
+    });
+    it("deberia devolver (1,1)E con cadena 1,1/1,1N/DAAAA", () => {
+        expect(controlarAuto("1,1/1,1N/DAAAA")).toEqual("(1,1)E");
+    });
+    it("deberia devolver (0,1)O con cadena 1,1/1,1N/IAAAA", () => {
+        expect(controlarAuto("1,1/1,1N/IAAAA")).toEqual("(0,1)O");
+    });
+    it("deberia devolver (1,0)S con cadena 1,1/1,1S/AAAA", () => {
+        expect(controlarAuto("1,1/1,1S/AAAA")).toEqual("(1,0)S");
+    });
+
 });
