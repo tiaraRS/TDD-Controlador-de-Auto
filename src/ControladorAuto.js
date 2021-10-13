@@ -45,38 +45,71 @@ function caracterValido(caracter){
 function obtenerCadenaDeAvance(cadenaDeControlAuto){
     let cadenaSeparada = cadenaDeControlAuto.split("/");  
     let cadenaDeAvance = cadenaDeControlAuto; 
-    if(cadenaSeparada.length>1){
-        cadenaDeAvance = cadenaSeparada[1];      
-    }
-    if(cadenaSeparada.length>2){
-        cadenaDeAvance = cadenaSeparada[2];      
-    }
+    if(cadenaSeparada.length>1) cadenaDeAvance = cadenaSeparada[1];      
+    if(cadenaSeparada.length>2) cadenaDeAvance = cadenaSeparada[2];      
     return cadenaDeAvance;
 }
 
+function obtenerPosicionCadenaDePosicionInicial(cadenaDeControlAuto){
+    let cadenaSeparada = cadenaDeControlAuto.split("/");
+    let posicionCadenaPosicionInicial = -1;
+    if(cadenaSeparada.length>2) posicionCadenaPosicionInicial = 1;
+    else if(cadenaSeparada.length>1) posicionCadenaPosicionInicial = 0; 
+    return posicionCadenaPosicionInicial; 
+}
+
+function tieneCadenaDePosicionInicial(posicionCadenaPosicionInicial){
+    return posicionCadenaPosicionInicial > -1;
+}
+
+function tienePosicionInicialY(cadenaPosInicial){
+    return cadenaPosInicial.length>1;
+}
+
+function tieneOrientacionInicial(y){
+    return y[y.length-1].toUpperCase() != y[y.length-1].toLowerCase();
+}
+
+function obtenerCadenaPosicionInicialSeparada(cadenaPosInicial){
+    return cadenaPosInicial.split(",");  
+}
+
+function obtenerPosicionInicialX(cadenaPosInicial){
+    let cadenaPosInicialSeparada = obtenerCadenaPosicionInicialSeparada(cadenaPosInicial);
+    return cadenaPosInicialSeparada[0];
+}
+
+function obtenerPosicionInicialY(cadenaPosInicial){
+    let y = 0; 
+    let cadenaPosInicialSeparada = obtenerCadenaPosicionInicialSeparada(cadenaPosInicial);
+    if(tienePosicionInicialY(cadenaPosInicial)){
+        y = cadenaPosInicialSeparada[1];
+        if(y!=undefined && tieneOrientacionInicial(y)){
+            y=y.slice(0,y.length-1);
+        }
+    }
+    return y;
+}
+function obtenerOrientacionInicial(cadenaPosInicial)  {
+    let y = 0; 
+    let cadenaPosInicialSeparada = obtenerCadenaPosicionInicialSeparada(cadenaPosInicial);
+    let orientacion ="N";
+    if(tienePosicionInicialY(cadenaPosInicial)){
+        y = cadenaPosInicialSeparada[1];
+        if(y!=undefined && tieneOrientacionInicial(y)){
+            orientacion = y[y.length-1];
+        }
+    }
+    return orientacion;
+}
 function obtenerPosicionInicial(cadenaDeControlAuto){
     let cadenaSeparada = cadenaDeControlAuto.split("/");
     let cadenaPosInicial="4";
-    let x = 4;
-    let y = 0;
-    let posPosicionInicial = -1;
-    let orientacion="N";
-    if(cadenaSeparada.length>2){        
-        posPosicionInicial = 1;
-    }
-    else if(cadenaSeparada.length>1){
-        posPosicionInicial = 0;
-    }    
-    if(posPosicionInicial>-1) cadenaPosInicial = cadenaSeparada[posPosicionInicial];
-    let cadenaPosInicialSeparada = cadenaPosInicial.split(",");  
-    x = cadenaPosInicialSeparada[0];
-    if(cadenaPosInicial.length>1){
-        y = cadenaPosInicialSeparada[1];
-        if(y!=undefined && y[y.length-1].toUpperCase() != y[y.length-1].toLowerCase()){
-            orientacion = y[y.length-1];
-            y=y.slice(0,y.length-1);
-        }
-    }      
+    let posicionCadenaPosicionInicial = obtenerPosicionCadenaDePosicionInicial(cadenaDeControlAuto);
+    if(tieneCadenaDePosicionInicial(posicionCadenaPosicionInicial)) cadenaPosInicial = cadenaSeparada[posicionCadenaPosicionInicial];
+    let x = obtenerPosicionInicialX(cadenaPosInicial);
+    let y = obtenerPosicionInicialY(cadenaPosInicial);
+    let orientacion = obtenerOrientacionInicial(cadenaPosInicial); 
     return [Number(x),Number(y),orientacion];
 }
 
@@ -85,14 +118,10 @@ function obtenerTamSuperficie(cadenaDeControlAuto){
     let tamInicialX = 8;
     let tamInicialY = 8;
     let cadenaTamSuperficie = "8";
-    if(cadenaSeparada.length>2){        
-        cadenaTamSuperficie = cadenaSeparada[0];
-    }
+    if(cadenaSeparada.length>2) cadenaTamSuperficie = cadenaSeparada[0];
     tamInicialX = cadenaTamSuperficie.split(",")[0];
     tamInicialY = cadenaTamSuperficie;
-    if(cadenaTamSuperficie.split(",").length>1){
-        tamInicialY = cadenaTamSuperficie.split(",")[1];
-    }    
+    if(cadenaTamSuperficie.split(",").length>1) tamInicialY = cadenaTamSuperficie.split(",")[1];   
     return [Number(tamInicialX),Number(tamInicialY)];
 }
 
@@ -107,38 +136,30 @@ function verificarPosicionInicialFueraDeRango(x,y, tamX, tamY){
     return valorFueraDeRango;
 }
 
-function verificarTamSuperficie(tamInicialX,tamInicialY){
+function tamSuperficieInvalida(tamInicialX,tamInicialY){
     return tamInicialY < 0 || tamInicialX < 0;
 }
 
+function caracterNoValido(caracter){
+    return Number.isNaN(caracter)||caracter==undefined;
+}
 
-function controlarAuto(cadenaDeControlAuto) {
-    let y = 0;
-    let x = 4;
-    let tamInicialX = 8;
-    let tamInicialY = 8;
-    let orientacion = "N";
-    let cadenaPosInicial="4";    
+
+function controlarAuto(cadenaDeControlAuto) {  
     let cadenaDeAvance = obtenerCadenaDeAvance(cadenaDeControlAuto);
-    [x,y,orientacion] = obtenerPosicionInicial(cadenaDeControlAuto);
-    [tamInicialX,tamInicialY] = obtenerTamSuperficie(cadenaDeControlAuto);   
-    if(Number.isNaN(tamInicialX) || Number.isNaN(tamInicialY)) return "Sintaxis incorrecto";
-    if(verificarTamSuperficie(tamInicialX,tamInicialY)) return "número negativo en tamaño de superficie";
+    let [x,y,orientacion] = obtenerPosicionInicial(cadenaDeControlAuto);
+    let [limiteSuperficieX,limiteSuperficieY] = obtenerTamSuperficie(cadenaDeControlAuto);   
+    if(caracterNoValido(limiteSuperficieX) || caracterNoValido(limiteSuperficieY)) return "Sintaxis incorrecto";
+    if(tamSuperficieInvalida(limiteSuperficieX,limiteSuperficieY)) return "número negativo en tamaño de superficie";
     if(!verificarOrientacionValida(orientacion)) return "orientación inicial no válida";    
-    if(verificarPosicionInicialFueraDeRango(x,y,tamInicialX, tamInicialY)) return "Valor no permitido: fuera de rango de superficie";
-    if(Number.isNaN(x)||x==undefined) return "Sintaxis incorrecto";
-    if(Number.isNaN(y)||y==undefined) return "Sintaxis incorrecto";
+    if(verificarPosicionInicialFueraDeRango(x,y,limiteSuperficieX, limiteSuperficieY)) return "Valor no permitido: fuera de rango de superficie";
+    if(caracterNoValido(x)||caracterNoValido(y)) return "Sintaxis incorrecto";    
     for(let i=0;i<cadenaDeAvance.length;i++){           
-        if(cadenaDeAvance[i]=="A"){
-            [x,y] = obtenerPosicionNuevaSegunOrientacion(x,y,orientacion)    
-        } 
+        if(cadenaDeAvance[i]=="A") [x,y] = obtenerPosicionNuevaSegunOrientacion(x,y,orientacion);   
         orientacion = obtenerOrientacionGiro(cadenaDeAvance[i],orientacion);       
-        if(!caracterValido(cadenaDeAvance[i])) { 
-            [x,y] = ajustarXYFueraDeSuperficie(x,y,tamInicialX,tamInicialY);
-            return `(${x},${y})${orientacion}`;
-        }       
+        if(!caracterValido(cadenaDeAvance[i])) break;
     }
-    [x,y] = ajustarXYFueraDeSuperficie(x,y,tamInicialX,tamInicialY);
+    [x,y] = ajustarXYFueraDeSuperficie(x,y,limiteSuperficieX,limiteSuperficieY);
     return `(${x},${y})${orientacion}`;
 }
   
