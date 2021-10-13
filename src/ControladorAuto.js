@@ -39,8 +39,7 @@ function obtenerOrientacionGiro(giro,orientacion){
 }
 
 function caracterValido(caracter){
-    let valido =  ["I","D","A"].includes(caracter);
-    return valido;
+    return ["I","D","A"].includes(caracter);
 }
 
 function obtenerCadenaDeAvance(cadenaDeControlAuto){
