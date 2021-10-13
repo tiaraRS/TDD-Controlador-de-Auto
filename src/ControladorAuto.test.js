@@ -111,3 +111,13 @@ describe("Controlador de Auto para girar varias veces y avanzar varias posicione
         expect(controlarAuto("IAAAAAA")).toEqual("(0,0)O");
     }); 
 });
+//F6
+describe("Controlador de Auto eligiendo posicion inicial x del auto en la superficie", () => {
+    //CC1
+    it("deberia devolver (0,3)O con cadena 0/AAAI", () => {
+        expect(controlarAuto("0/AAAI")).toEqual("(0,3)O");
+    });
+    it("deberia devolver (5,3)N con cadena 0/AAAI", () => {
+        expect(controlarAuto("5/AAA")).toEqual("(5,3)N");
+    });
+});

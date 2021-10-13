@@ -48,6 +48,13 @@ function controlarAuto(cadenaDeControlAuto) {
     let y = 0;
     let x = 4;
     let orientacion = "N";
+    let cadenaSeparada = cadenaDeControlAuto.split("/");
+    let cadenaPosInicial="4";
+    if(cadenaSeparada.length>1){
+        cadenaDeControlAuto = cadenaSeparada[1];
+        cadenaPosInicial = cadenaSeparada[0];
+    }
+    x = Number(cadenaPosInicial);
     for(let i=0;i<cadenaDeControlAuto.length;i++){           
         if(cadenaDeControlAuto[i]=="A"){
             [x,y] = obtenerPosicionNuevaSegunOrientacion(x,y,orientacion)    
