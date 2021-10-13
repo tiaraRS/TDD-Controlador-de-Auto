@@ -120,4 +120,11 @@ describe("Controlador de Auto eligiendo posicion inicial x del auto en la superf
     it("deberia devolver (5,3)N con cadena 0/AAAI", () => {
         expect(controlarAuto("5/AAA")).toEqual("(5,3)N");
     });
+    //CC2
+    it("deberia mostrar mensaje de error fuera de rango de superficie para 9/DA", () => {
+        expect(controlarAuto("9/DA")).toEqual("Valor no permitido: fuera de rango de superficie");
+    });
+    it("deberia mostrar mensaje de error fuera de rango de superficie para -9/DA", () => {
+        expect(controlarAuto("-9/DA")).toEqual("Valor no permitido: fuera de rango de superficie");
+    });
 });
