@@ -85,5 +85,20 @@ describe("Controlador de Auto para girar varias veces y avanzar 1 posicion", () 
     });
     
 });
+//F5:
+describe("Controlador de Auto para girar varias veces y avanzar varias posiciones", () => {
+    //CC1
+    it("deberia devolver (4,3)N con cadena AAA", () => {
+        expect(controlarAuto("AAA")).toEqual("(4,3)N");
+    });
+    it("deberia devolver (4,6)N con cadena DIAAAAAA", () => {
+        expect(controlarAuto("DIAAAAAA")).toEqual("(4,6)N");
+    });
+    it("deberia devolver (5,1)E con cadena AADDAIA", () => {
+        expect(controlarAuto("AADDAIA")).toEqual("(5,1)E");
+    });
+   
+    
+});
 
 
