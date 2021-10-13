@@ -172,4 +172,11 @@ describe("Controlador de Auto eligiendo orientacion inicial del auto", () => {
     it("deberia devolver (0,4)O con cadena 0,1N/AAAI", () => {
         expect(controlarAuto("0,1N/AAAI")).toEqual("(0,4)O");
     });
+    //CC2
+    it("deberia devolver orientación inicial no válida con cadena 5,5B/AAAI", () => {
+        expect(controlarAuto("5,5B/AAAI")).toEqual("orientación inicial no válida");
+    });
+    it("deberia devolver orientación inicial no válida con cadena 5,5U/AAAI", () => {
+        expect(controlarAuto("5,5U/AAAI")).toEqual("orientación inicial no válida");
+    });
 });

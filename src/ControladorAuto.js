@@ -79,8 +79,10 @@ function controlarAuto(cadenaDeControlAuto) {
     let x = 4;
     let orientacion = "N";
     let cadenaPosInicial="4";
+    let orientaciones = ['N','E','S','O'];
     let cadenaDeAvance = obtenerCadenaDeAvance(cadenaDeControlAuto);
     [x,y,orientacion] = obtenerPosicionInicial(cadenaDeControlAuto);
+    if(!orientaciones.includes(orientacion)) return "orientación inicial no válida";
     if(x>8 || x<0) return "Valor no permitido: fuera de rango de superficie";
     if(y>8 || y<0) return "Valor no permitido: fuera de rango de superficie";
     if(Number.isNaN(x)||x==undefined) return "Sintaxis incorrecto";
