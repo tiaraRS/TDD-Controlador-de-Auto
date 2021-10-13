@@ -1,4 +1,3 @@
-
 function ajustarXYFueraDeSuperficie(x,y){
     let xAjustada = x;
     let yAjustada = y;
@@ -58,6 +57,7 @@ function obtenerPosicionInicial(cadenaDeControlAuto){
     let cadenaPosInicial="4";
     let x = 4;
     let y = 0;
+    let orientacion="N";
     if(cadenaSeparada.length>1){        
         cadenaPosInicial = cadenaSeparada[0];
     }
@@ -65,8 +65,12 @@ function obtenerPosicionInicial(cadenaDeControlAuto){
     x = cadenaPosInicialSeparada[0];
     if(cadenaPosInicial.length>1){
         y = cadenaPosInicialSeparada[1];
-    }   
-    return [Number(x),Number(y)];
+        if(y!=undefined && y[y.length-1].toUpperCase() != y[y.length-1].toLowerCase()){
+            orientacion = y[y.length-1];
+            y=y.slice(0,y.length-1);
+        }
+    }      
+    return [Number(x),Number(y),orientacion];
 }
 
 
@@ -76,12 +80,11 @@ function controlarAuto(cadenaDeControlAuto) {
     let orientacion = "N";
     let cadenaPosInicial="4";
     let cadenaDeAvance = obtenerCadenaDeAvance(cadenaDeControlAuto);
-    [x,y] = obtenerPosicionInicial(cadenaDeControlAuto);
-    console.log("y=",y)
+    [x,y,orientacion] = obtenerPosicionInicial(cadenaDeControlAuto);
     if(x>8 || x<0) return "Valor no permitido: fuera de rango de superficie";
     if(y>8 || y<0) return "Valor no permitido: fuera de rango de superficie";
-    if(Number.isNaN(x)||x==undefined) return "Sintaxis incorrecto"
-    if(Number.isNaN(y)||y==undefined) return "Sintaxis incorrecto"
+    if(Number.isNaN(x)||x==undefined) return "Sintaxis incorrecto";
+    if(Number.isNaN(y)||y==undefined) return "Sintaxis incorrecto";
     for(let i=0;i<cadenaDeAvance.length;i++){           
         if(cadenaDeAvance[i]=="A"){
             [x,y] = obtenerPosicionNuevaSegunOrientacion(x,y,orientacion)    
@@ -96,4 +99,3 @@ function controlarAuto(cadenaDeControlAuto) {
 }
   
 export default controlarAuto;
-  

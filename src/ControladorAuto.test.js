@@ -163,3 +163,13 @@ describe("Controlador de Auto eligiendo posicion inicial x,y del auto en la supe
         expect(controlarAuto("0,;,1/AAAI")).toEqual("Sintaxis incorrecto");
     });
 });
+//F8
+describe("Controlador de Auto eligiendo orientacion inicial del auto", () => {
+    //CC1
+    it("deberia devolver (0,1)N con cadena 0,0N/A", () => {
+        expect(controlarAuto("0,0N/A")).toEqual("(0,1)N");
+    });
+    it("deberia devolver (0,4)O con cadena 0,1N/AAAI", () => {
+        expect(controlarAuto("0,1N/AAAI")).toEqual("(0,4)O");
+    });
+});
