@@ -157,9 +157,8 @@ function controlarAuto(cadenaDeControlAuto) {
     for(let i=0;i<cadenaDeAvance.length;i++){    
         if(cadenaDeAvance[i]=="S"){
             if(orientacion=="O") x = x-2;
-            else{
-                y = y+2;
-            }
+            if(orientacion=="E") x = x+2;
+            if(orientacion=="N") y = y+2;
         }        
         if(cadenaDeAvance[i]=="A") [x,y] = obtenerPosicionNuevaSegunOrientacion(x,y,orientacion);   
         orientacion = obtenerOrientacionGiro(cadenaDeAvance[i],orientacion);       

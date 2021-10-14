@@ -255,6 +255,9 @@ describe("Controlador de Auto con salto", () => {
     it("deberia girar izq y avanzar 2 posiciones en superficie por defecto y desde pos inicial por defecto con comando IS", () => {
         expect(controlarAuto("IS")).toEqual("(2,0)O");
     });
+    it("deberia girar derecha y avanzar 2 posiciones en superficie por defecto y desde pos inicial por defecto con comando IS", () => {
+        expect(controlarAuto("DS")).toEqual("(6,0)E");
+    });
 
     
 });
