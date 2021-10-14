@@ -239,3 +239,18 @@ describe("Controlador de Auto eligiendo tamaño de superficie l y a (lxa) del au
 
 });
 
+describe("Controlador de Auto con salto", () => {
+    it("deberia avanzar 2 posiciones en superficie por defecto y desde pos inicial por defecto con comando S", () => {
+        expect(controlarAuto("S")).toEqual("(4,2)N");
+    });
+    it("deberia avanzar 2 posiciones en superficie por defecto y desde pos inicial por defecto con comando ST", () => {
+        expect(controlarAuto("ST")).toEqual("(4,2)N");
+    });
+    it("deberia avanzar 3 posiciones en superficie por defecto y desde pos inicial por defecto con comando SA", () => {
+        expect(controlarAuto("SA")).toEqual("(4,3)N");
+    });
+    it("deberia avanzar 3 posiciones en superficie por defecto y desde pos inicial por defecto con comando SA", () => {
+        expect(controlarAuto("AS")).toEqual("(4,3)N");
+    });
+    
+});
