@@ -155,7 +155,12 @@ function controlarAuto(cadenaDeControlAuto) {
     if(verificarPosicionInicialFueraDeRango(x,y,limiteSuperficieX, limiteSuperficieY)) return "Valor no permitido: fuera de rango de superficie";
     if(caracterNoValido(x)||caracterNoValido(y)) return "Sintaxis incorrecto";    
     for(let i=0;i<cadenaDeAvance.length;i++){    
-        if(cadenaDeAvance[i]=="S") y = y+2;       
+        if(cadenaDeAvance[i]=="S"){
+            if(orientacion=="O") x = x-2;
+            else{
+                y = y+2;
+            }
+        }        
         if(cadenaDeAvance[i]=="A") [x,y] = obtenerPosicionNuevaSegunOrientacion(x,y,orientacion);   
         orientacion = obtenerOrientacionGiro(cadenaDeAvance[i],orientacion);       
         if(!caracterValido(cadenaDeAvance[i])) break;
